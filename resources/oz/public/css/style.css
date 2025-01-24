@@ -3,7 +3,7 @@
 @font-face {
     font-family: "LatinModernRomanWOFF";
     /*src: url('https://www.albany.edu/~hammond/webfonts/lmroman12-regular.woff');*/
-    src: url('http://ozviz.io/fonts/lmroman12-regular.woff');
+    src: 'fonts/lmroman12-regular.woff'; /*url('http://ozviz.io/fonts/lmroman12-regular.woff');*/
 }
 
 /* for math fonts? */

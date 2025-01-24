@@ -276,7 +276,7 @@
 ;; Main view functions
 
 (def ^:private mathjax-script
-  [:script {:type "text/javascript" :src "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"}])
+  [:script {:type "text/javascript" :src "/js"}])
 
 (defn- apply-fn-component
   "Takes a hiccup-form where the first argument is a function and applies it with the rest of the entries in form
@@ -777,19 +777,20 @@
           [
            ;[:link {:rel "stylesheet" :href "http://ozviz.io/css/style.css" :type "text/css"}]
            [:style (slurp (io/resource "oz/public/css/style.css"))]
-           [:link {:rel "stylesheet" :href "http://ozviz.io/fonts/lmroman12-regular.woff"}]
-           [:link {:rel "stylesheet" :href "https://fonts.googleapis.com/css?family=Open+Sans"}]]) 
+           [:link {:rel "stylesheet" :href "fonts/lmroman12-regular.woff"}]
+           [:link {:rel "stylesheet" :src "css/fonts.css"}]])
         ;; TODO Ideally we wouldn't need these, and inclusion of the compiled oz target should be enough; However,
         ;; we're not currently actually included that in html export, so this is necessary for now.
         ;; Everntually though...
         (when-not omit-vega-libs?
-          [[:script {:type "text/javascript" :src (str "https://cdn.jsdelivr.net/npm/vega@" vega-version)}]
-           [:script {:type "text/javascript" :src (str "https://cdn.jsdelivr.net/npm/vega-lite@" vega-lite-version)}]
-           [:script {:type "text/javascript" :src (str "https://cdn.jsdelivr.net/npm/vega-embed@" vega-embed-version)}]])
+          [[:script {:type "text/javascript" :src "js/vega.js"}]
+           [:script {:type "text/javascript" :src "js/vega-lite.js"}]
+           [:script {:type "text/javascript" :src "js/vega-embed.js"}]])
         ;; Not allowing this option for now;
         ;(when-not omit-js-libs?
         ;[:script {:type "text/javascript" :src "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML"}]
-        [[:script {:type "text/javascript" :src "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"}]]
+        [[:script {:type "text/javascript" :src "js/mathjax.js"}
+          #_{:type "text/javascript" :src "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"}]]
         header-extras))))
 
 
